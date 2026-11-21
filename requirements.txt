@@ -1,0 +1,37 @@
+# Streamlit application
+streamlit
+
+# Data handling and visualisation
+# pandas is held below 3.0 because sktime / darts are built against the 2.x series.
+# If the resolver ever picks a 2.3.x build that breaks a model, pin it back to pandas==2.2.3.
+pandas>=2.2.3,<3.0
+numpy
+plotly
+matplotlib
+
+# Forecasting models used by the app and energy_forecasting_final.ipynb
+sktime
+statsmodels
+xgboost
+scikit-learn
+mlforecast
+tbats
+
+# Darts: since 0.41 the `darts` package replaces `u8darts` (do NOT install both).
+#   [torch]   -> PyTorch neural models (TiDE, TSMixer, TFT)
+#   [notorch] -> tree-model integrations (XGBModel used by darts_XGBoost)
+darts[torch,notorch]>=0.41.0
+
+# Optional, for CPU-only hosts such as Streamlit Community Cloud: the default torch wheel bundles CUDA
+# (about 2 GB). Uncomment this line (keep it above the packages it affects) to install the small CPU build.
+# --extra-index-url https://download.pytorch.org/whl/cpu
+
+# Notebook tuning and notebook execution / display
+optuna
+ipython
+ipykernel
+
+# File readers supported by the existing app (Excel and Parquet)
+openpyxl
+xlrd
+pyarrow
